@@ -1,0 +1,190 @@
+<h1>This is a calendar</h1>
+
+<div>
+
+  <!-- ************ -->
+  <!-- Title -->
+  <!-- ************ -->
+  <h2 class="text-center">{{ calendarCtrl.calendarTitle }}</h2>
+
+  <!-- ************ -->
+  <!-- Previous, Today, Next, Year, Month, Week and Day section -->
+  <!-- ************ -->
+  <div class="row">
+    <div class="col-md-6 text-center">
+      <div class="btn-group">
+
+        <button
+          class="btn btn-primary"
+          mwl-date-modifier
+          date="calendarCtrl.viewDate"
+          decrement="calendarCtrl.calendarView">
+          Previous
+        </button>
+
+        <button
+          class="btn btn-default"
+          mwl-date-modifier
+          date="calendarCtrl.viewDate"
+          set-to-today>
+          Today
+        </button>
+
+        <button
+          class="btn btn-primary"
+          mwl-date-modifier
+          date="calendarCtrl.viewDate"
+          increment="calendarCtrl.calendarView">
+          Next
+        </button>
+
+      </div>
+    </div>
+
+    <br class="visible-xs visible-sm">
+
+    <div class="col-md-6 text-center">
+      <div class="btn-group">
+        <label class="btn btn-primary" ng-model="calendarCtrl.calendarView" uib-btn-radio="'year'">Year</label>
+        <label class="btn btn-primary" ng-model="calendarCtrl.calendarView" uib-btn-radio="'month'">Month</label>
+        <label class="btn btn-primary" ng-model="calendarCtrl.calendarView" uib-btn-radio="'week'">Week</label>
+        <label class="btn btn-primary" ng-model="calendarCtrl.calendarView" uib-btn-radio="'day'">Day</label>
+      </div>
+    </div>
+
+  </div>
+
+  <br>
+
+  <!-- ************ -->
+  <!-- Calendar -->
+  <!-- ************ -->
+  <mwl-calendar
+    events="calendarCtrl.events"
+    view="calendarCtrl.calendarView"
+    view-title="calendarCtrl.calendarTitle"
+    view-date="calendarCtrl.viewDate"
+    on-event-click="calendarCtrl.eventClicked(calendarEvent)"
+    on-event-times-changed="calendarCtrl.eventTimesChanged(calendarEvent);
+                            calendarEvent.startsAt = calendarNewEventStart;
+                            calendarEvent.endsAt = calendarNewEventEnd"
+    cell-is-open="calendarCtrl.isCellOpen"
+    day-view-start="10:00"
+    day-view-end="20:00"
+    day-view-split="30"
+    cell-modifier="calendarCtrl.modifyCell(calendarCell)">
+  </mwl-calendar>
+
+  <br><br><br>
+
+  <!-- ************ -->
+  <!-- Event editor -->
+  <!-- ************ -->
+  <h3 id="event-editor">
+    Edit events
+    <button
+      class="btn btn-primary pull-right"
+      ng-click="calendarCtrl.addEvent()">
+      Add new
+    </button>
+    <div class="clearfix"></div>
+  </h3>
+
+  <table class="table table-bordered">
+
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Primary color</th>
+        <th>Secondary color</th>
+        <th>Starts at</th>
+        <th>Ends at</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="event in calendarCtrl.events track by $index">
+        <td>
+          <input
+            type="text"
+            class="form-control"
+            ng-model="event.title">
+        </td>
+
+        <td>
+          <input class="form-control" colorpicker type="text" ng-model="event.color.primary">
+        </td>
+
+        <td>
+          <input class="form-control" colorpicker type="text" ng-model="event.color.secondary">
+        </td>
+
+        <td>
+          <p class="input-group" style="max-width: 250px">
+            <input
+              type="text"
+              class="form-control"
+              readonly
+              uib-datepicker-popup="dd MMMM yyyy"
+              ng-model="event.startsAt"
+              is-open="event.startOpen"
+              close-text="Close" >
+            <span class="input-group-btn">
+              <button
+                type="button"
+                class="btn btn-default"
+                ng-click="calendarCtrl.toggle($event, 'startOpen', event)">
+                <i class="glyphicon glyphicon-calendar"></i>
+              </button>
+            </span>
+          </p>
+          <div
+            uib-timepicker
+            ng-model="event.startsAt"
+            hour-step="1"
+            minute-step="15"
+            show-meridian="false">
+          </div>
+        </td>
+
+        <td>
+          <p class="input-group" style="max-width: 250px">
+            <input
+              type="text"
+              class="form-control"
+              readonly
+              uib-datepicker-popup="dd MMMM yyyy"
+              ng-model="event.endsAt"
+              is-open="event.endOpen"
+              close-text="Close">
+            <span class="input-group-btn">
+              <button
+                type="button"
+                class="btn btn-default"
+                ng-click="calendarCtrl.toggle($event, 'endOpen', event)">
+                <i class="glyphicon glyphicon-calendar"></i>
+              </button>
+            </span>
+          </p>
+          <div
+            uib-timepicker
+            ng-model="event.endsAt"
+            hour-step="1"
+            minute-step="15"
+            show-meridian="false">
+          </div>
+        </td>
+
+        <td>
+          <button
+            class="btn btn-danger"
+            ng-click="calendarCtrl.events.splice($index, 1)">
+            Delete
+          </button>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

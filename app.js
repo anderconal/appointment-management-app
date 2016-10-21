@@ -22,6 +22,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+/*
+  Any Bower components are loaded from HTML like this:
+  <script src="bower_components/path"></script>
+*/
+app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+
+/*
+  Any Node modules are loaded from HTML like this:
+  <script src="node_modules/path"></script>
+*/
+app.use('/node_modules',  express.static(__dirname + '/node_modules'));
+
 app.use('/', routes);
 app.use('/users', users);
 
