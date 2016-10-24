@@ -6,6 +6,6 @@
 
   function indexController() {
     var vm = this;
-    vm.name = 'Lydia';
+    vm.name = 'Something';
   }
 })();
