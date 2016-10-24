@@ -4,7 +4,7 @@
   .controller('calendarController', calendarController);
 
   /* @ngInject */
-  function calendarController(Events, calendarConfig, $uibModal) {
+  function calendarController(Events, calendarConfig, $uibModal, getAllEvents) {
     var vm = this;
 
     // Declaration of variables
@@ -32,7 +32,10 @@
             alert.show('Deleted', args.calendarEvent);
           }
         }];
-      vm.events = Events.getEvents();
+      vm.events = getAllEvents;
+
+      convertDates(vm.events);
+      
       vm.isCellOpen = true;
       vm.calendarTitle = 'Lydia\'s calendar';
     } // End of the activate function
@@ -47,6 +50,7 @@
           draggable: true,
           resizable: true
         });
+        console.log(startsAt);
       };
 
     vm.eventClicked = function(event) {
@@ -81,5 +85,17 @@
       $event.stopPropagation();
       event[field] = !event[field];
     };
+
+    function convertDates(events) {
+      for (var i = 0; i < events.length; i++) {
+        var currentStartDate = new Date(events[i].startsAt);
+        events[i].startsAt = currentStartDate.getTime() +
+                             currentStartDate.getTimezoneOffset() * 60000;
+
+        var currentEndDate = new Date(events[i].endsAt);
+        events[i].endsAt = currentEndDate.getTime() +
+                           currentEndDate.getTimezoneOffset() * 60000;
+      }
+    }
   }
 })();

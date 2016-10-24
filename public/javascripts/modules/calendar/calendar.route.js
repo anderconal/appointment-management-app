@@ -9,7 +9,13 @@
       url: '/calendar',
       templateUrl: 'templates/modules/calendar/calendar.template.html',
       controller: 'calendarController',
-      controllerAs: 'calendarCtrl'
+      controllerAs: 'calendarCtrl',
+      resolve: {
+        /* @ngInject */
+        getAllEvents: function(Events) {
+          return Events.getAllEvents();
+        }
+      }
     };
 
     $stateProvider.state(calendar);

@@ -5,6 +5,18 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+/*
+  Mongoose
+  We have to initialize all the Mongoose configuration before require the
+  routes.
+*/
+
+var mongoose = require('mongoose');
+require('./models/Customers');
+require('./models/Events');
+
+mongoose.connect('mongodb://localhost/app-management-app');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 

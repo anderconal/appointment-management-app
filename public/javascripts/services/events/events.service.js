@@ -4,14 +4,15 @@
   angular.module('events')
   .factory('Events', Events);
 
-  function Events() {
+  /* @ngInject */
+  function Events($http, $q) {
     var service = {
-        getEvents: getEvents
+        getAllEvents: getAllEvents
       };
 
-    var getEvents = getEvents;
+    var getAllEvents = getAllEvents;
 
-    function getEvents() {
+    /*function getEvents() {
       var events = [
         {
           title: 'Ander Conal', // The title of the event,
@@ -62,6 +63,20 @@
       ];
 
       return events;
+    } */
+
+    function getAllEvents() {
+      var events = {};
+      var deferred = $q.defer();
+
+      $http.get('/events').then(function(result) {
+        deferred.resolve(result.data);
+        //angular.copy(result.data, events);
+      }, function(error) {
+        deferred.reject(error);
+      });
+
+      return deferred.promise;
     }
 
     return service;
