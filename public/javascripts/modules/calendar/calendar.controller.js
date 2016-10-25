@@ -32,10 +32,11 @@
             alert.show('Deleted', args.calendarEvent);
           }
         }];
+
       vm.events = getAllEvents;
 
       convertDates(vm.events);
-      
+
       vm.isCellOpen = true;
       vm.calendarTitle = 'Lydia\'s calendar';
     } // End of the activate function
@@ -87,14 +88,23 @@
     };
 
     function convertDates(events) {
-      for (var i = 0; i < events.length; i++) {
-        var currentStartDate = new Date(events[i].startsAt);
-        events[i].startsAt = currentStartDate.getTime() +
-                             currentStartDate.getTimezoneOffset() * 60000;
+      var currentStartDate, currentEndDate = {};
 
-        var currentEndDate = new Date(events[i].endsAt);
-        events[i].endsAt = currentEndDate.getTime() +
-                           currentEndDate.getTimezoneOffset() * 60000;
+      for (var i = 0; i < events.length; i++) {
+        /*
+          Since we get a JSON with events, we have to convert the
+          events.startsAt and events.endsAt Strings to valid Date objects
+        */
+
+        // startsAt
+        currentStartDate = new Date(events[i].startsAt);
+        events[i].startsAt = new Date(currentStartDate.getTime() +
+                             currentStartDate.getTimezoneOffset() * 60000);
+
+        // endsAt
+        currentEndDate = new Date(events[i].endsAt);
+        events[i].endsAt = new Date(currentEndDate.getTime() +
+                           currentEndDate.getTimezoneOffset() * 60000);
       }
     }
   }
