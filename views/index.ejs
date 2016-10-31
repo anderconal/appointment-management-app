@@ -1,78 +1,25 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<!doctype html>
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Management App</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css">
-  <link rel="stylesheet" href="stylesheets/dest/main.css">
+    <title>Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <style>
+        body        { padding-top:80px; }
+    </style>
 </head>
 <body>
-  <ul class="menu">
-    <li><a ui-sref="index" ui-sref-active="active">Home</a></li>
-    <li><a ui-sref="calendar" ui-sref-active="active">Calendar</a></li>
-  </ul>
+<div class="container">
 
-  <ui-view></ui-view>
+    <div class="jumbotron text-center">
+        <h1><span class="fa fa-lock"></span> Authentication</h1>
 
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
+        <p>Login or Register with:</p>
 
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
-  
-  <!-- ********** -->
-  <!-- BOWER COMPONENTS -->
-  <!-- ********** -->
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/moment/min/moment.min.js"></script>
-  <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
-  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-  <script src="bower_components/interact/dist/interact.min.js"></script>
-  <script src="bower_components/angular-touch/angular-touch.min.js"></script>
-  <script src="bower_components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js"></script>
-  <script src="bower_components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.min.js"></script>
-  <script src="bower_components/angular-aria/angular-aria.min.js"></script>
-  <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+        <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
+        <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
+    </div>
 
-  <!-- ********** -->
-  <!-- NODE MODULES -->
-  <!-- ********** -->
-  <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
-
-  <!-- ********** -->
-  <!-- ANGULAR APP -->
-  <!-- ********** -->
-  <script src="javascripts/angularApp.js"></script>
-
-  <!-- ********** -->
-  <!-- MODULES -->
-  <!-- ********** -->
-  <script src="javascripts/modules/index/index.module.js"></script>
-  <script src="javascripts/modules/index/index.route.js"></script>
-  <script src="javascripts/modules/index/index.controller.js"></script>
-
-  <script src="javascripts/modules/calendar/calendar.module.js"></script>
-  <script src="javascripts/modules/calendar/calendar.route.js"></script>
-  <script src="javascripts/modules/calendar/calendar.directive.js"></script>
-  <script src="javascripts/modules/calendar/calendar.controller.js"></script>
-
-  <script src="javascripts/modules/calendar/event-modal/event-modal.module.js"></script>
-  <script src="javascripts/modules/calendar/event-modal/event-modal.controller.js"></script>
-
-  <!-- ********** -->
-  <!-- SERVICES -->
-  <!-- ********** -->
-  <script src="javascripts/services/events/events.module.js"></script>
-  <script src="javascripts/services/events/events.service.js"></script>
+</div>
 </body>
 </html>
