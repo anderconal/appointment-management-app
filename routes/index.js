@@ -129,6 +129,23 @@ router.get('/logout', function(req, res) {
 });
 
 /**********/
+// Google
+/**********/
+/*
+  Send to Google to do the authentication. Profile gets us their basic
+  information including their name. Email gets their emails.
+*/
+router.get('/auth/google', passport.authenticate('google', {
+                            scope: ['profile', 'email']}));
+
+// The callback after Google has authenticated the user
+router.get('/auth/google/callback',
+            passport.authenticate('google', {
+              successRedirect: '/home',
+              failureRedirect: '/'
+            }));
+            
+/**********/
 // Application start page
 /**********/
 router.get('/home', function(req, res, next) {
