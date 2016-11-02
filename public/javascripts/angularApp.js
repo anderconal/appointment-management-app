@@ -13,6 +13,10 @@ angular.module('myApp', [
   'calendar',
   'eventModal',
   'events',
+  'ngCookies',
+  'pascalprecht.translate',
+	'tmh.dynamicLocale',
+  'translateApp'
 ]).
 /* @ngInject */
 config(function($urlRouterProvider, $touchProvider) {

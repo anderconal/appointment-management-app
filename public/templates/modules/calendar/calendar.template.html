@@ -1,11 +1,9 @@
-<h1>This is a calendar</h1>
-
 <div>
 
   <!-- ************ -->
   <!-- Title -->
   <!-- ************ -->
-  <h2 class="text-center">{{ calendarCtrl.calendarTitle }}</h2>
+  <h2 class="text-center">{{ calendarCtrl.calendarTitle | translate }}</h2>
 
   <!-- ************ -->
   <!-- Previous, Today, Next, Year, Month, Week and Day section -->
@@ -19,7 +17,7 @@
           mwl-date-modifier
           date="calendarCtrl.viewDate"
           decrement="calendarCtrl.calendarView">
-          Previous
+          {{ "calendar.template.previous" | translate }}
         </button>
 
         <button
@@ -27,7 +25,7 @@
           mwl-date-modifier
           date="calendarCtrl.viewDate"
           set-to-today>
-          Today
+          {{ "calendar.template.today" | translate }}
         </button>
 
         <button
@@ -35,7 +33,7 @@
           mwl-date-modifier
           date="calendarCtrl.viewDate"
           increment="calendarCtrl.calendarView">
-          Next
+          {{ "calendar.template.next" | translate }}
         </button>
 
       </div>
@@ -45,10 +43,10 @@
 
     <div class="col-md-6 text-center">
       <div class="btn-group">
-        <label class="btn btn-primary" ng-model="calendarCtrl.calendarView" uib-btn-radio="'year'">Year</label>
-        <label class="btn btn-primary" ng-model="calendarCtrl.calendarView" uib-btn-radio="'month'">Month</label>
-        <label class="btn btn-primary" ng-model="calendarCtrl.calendarView" uib-btn-radio="'week'">Week</label>
-        <label class="btn btn-primary" ng-model="calendarCtrl.calendarView" uib-btn-radio="'day'">Day</label>
+        <label class="btn btn-primary" ng-model="calendarCtrl.calendarView" uib-btn-radio="'year'">{{ "calendar.template.year" | translate }}</label>
+        <label class="btn btn-primary" ng-model="calendarCtrl.calendarView" uib-btn-radio="'month'">{{ "calendar.template.month" | translate }}</label>
+        <label class="btn btn-primary" ng-model="calendarCtrl.calendarView" uib-btn-radio="'week'">{{ "calendar.template.week" | translate }}</label>
+        <label class="btn btn-primary" ng-model="calendarCtrl.calendarView" uib-btn-radio="'day'">{{ "calendar.template.day" | translate }}</label>
       </div>
     </div>
 
@@ -81,11 +79,11 @@
   <!-- Event editor -->
   <!-- ************ -->
   <h3 id="event-editor">
-    Edit events
+    {{ "calendar.template.edit_events" | translate }}
     <button
       class="btn btn-primary pull-right"
       ng-click="calendarCtrl.addEvent()">
-      Add new
+      {{ "calendar.template.add_new" | translate }}
     </button>
     <div class="clearfix"></div>
   </h3>
@@ -94,12 +92,12 @@
 
     <thead>
       <tr>
-        <th>Title</th>
-        <th>Primary color</th>
-        <th>Secondary color</th>
-        <th>Starts at</th>
-        <th>Ends at</th>
-        <th>Remove</th>
+        <th>{{ "calendar.template.title" | translate }}</th>
+        <th>{{ "calendar.template.primary_color" | translate }}</th>
+        <th>{{ "calendar.template.secondary_color" | translate }}</th>
+        <th>{{ "calendar.template.starts_at" | translate }}</th>
+        <th>{{ "calendar.template.ends_at" | translate }}</th>
+        <th>{{ "calendar.template.remove" | translate }}</th>
       </tr>
     </thead>
 
@@ -180,7 +178,7 @@
           <button
             class="btn btn-danger"
             ng-click="calendarCtrl.events.splice($index, 1)">
-            Delete
+            {{ "calendar.template.delete" | translate }}
           </button>
         </td>
 

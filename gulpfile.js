@@ -48,6 +48,7 @@ gulp.task('watcher', ['browserSync', 'css'], function() {
   gulp.watch('public/**/*.css', ['css']);
   gulp.watch('public/**/*.html', browserSync.reload);
   gulp.watch('public/**/*.js', browserSync.reload);
+  gulp.watch('public/**/*.json', browserSync.reload);
 });
 
 // Create a task to enable Gulp to spin up a server using Browsersync
