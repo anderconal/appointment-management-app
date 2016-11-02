@@ -7,7 +7,7 @@
   * Linux: https://docs.mongodb.com/manual/administration/install-on-linux/
   * OS X: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
   * Windows: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
-3. Be sure you have created a local database called app-management-app or the name you want but, in this case, change inside app.js the mongoose.connect URL.
+3. Be sure you have created a local database called app-management-app. You can call it as you want but, in this case, you have to change the URL inside config/database.js
 4. Go to the management-app directory:
   * cd appointment-management-app
 5. Install node.js dependencies
