@@ -4,9 +4,9 @@
   angular.module('translateApp')
     .constant('LOCALES', {
       'locales': {
-        'es_ES': 'Castellano',
-        'en_UK': 'English'
+        'es': 'Castellano',
+        'en': 'English'
       },
-      'preferredLocale': 'es_ES'
+      'preferredLocale': 'es'
     })
 })();
