@@ -1,0 +1,18 @@
+{
+  "calendar.template.delete": "Eliminar",
+  "calendar.template.today": "Hoy",
+  "calendar.template.previous": "Anterior",
+  "calendar.template.next": "Siguiente",
+  "calendar.template.year": "Año",
+  "calendar.template.month": "Mes",
+  "calendar.template.week": "Semana",
+  "calendar.template.day": "Día",
+  "calendar.template.edit_events": "Editar eventos",
+  "calendar.template.add_new": "Añadir nuevo",
+  "calendar.template.title": "Título",
+  "calendar.template.primary_color": "Color principal",
+  "calendar.template.secondary_color": "Color secundario",
+  "calendar.template.starts_at": "Comienzo",
+  "calendar.template.ends_at": "Fin",
+  "calendar.template.remove": "Eliminar"
+}

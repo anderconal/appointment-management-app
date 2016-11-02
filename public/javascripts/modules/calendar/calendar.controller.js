@@ -12,7 +12,6 @@
     vm.viewDate = {};
     vm.actions = [];
     vm.events = [];
-    vm.calendarTitle = '';
     vm.isCellOpen = false;
 
     // Constructor like function
@@ -38,7 +37,6 @@
       convertDates(vm.events);
 
       vm.isCellOpen = true;
-      vm.calendarTitle = 'Lydia\'s calendar';
     } // End of the activate function
 
     // Functions
