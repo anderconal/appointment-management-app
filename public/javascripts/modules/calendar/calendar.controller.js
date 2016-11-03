@@ -4,7 +4,8 @@
   .controller('calendarController', calendarController);
 
   /* @ngInject */
-  function calendarController(Events, calendarConfig, $uibModal, getAllEvents) {
+  function calendarController(Events, calendarConfig, $uibModal, getAllEvents,
+  CalendarConstants) {
     var vm = this;
 
     // Declaration of variables
@@ -23,7 +24,7 @@
     activate();
 
     function activate() {
-      vm.calendarView = 'week';
+      vm.calendarView = CalendarConstants.CALENDAR_WEEK_VIEW;
       vm.viewDate = new Date();
       vm.weekAndYearNumber = getWeekAndYearNumber(vm.viewDate);
       vm.weekNumber = vm.weekAndYearNumber[1];
@@ -107,10 +108,10 @@
       Dates
     */
     function subtractWeek(view) {
-      if (view === 'week') {
-        if (vm.weekNumber > 1) {
+      if (view === CalendarConstants.CALENDAR_WEEK_VIEW) {
+        if (vm.weekNumber > CalendarConstants.CALENDAR_FIRST_WEEK_NUMBER) {
           vm.weekNumber--;
-        } else if (vm.weekNumber === 1) {
+        } else if (vm.weekNumber === CalendarConstants.CALENDAR_FIRST_WEEK_NUMBER) {
           vm.yearNumber--;
           vm.weeksInYear = weeksInYear(vm.yearNumber);
           vm.weekNumber = vm.weeksInYear;
@@ -119,7 +120,7 @@
     }
 
     function setToToday(view) {
-      if (view === 'week') {
+      if (view === CalendarConstants.CALENDAR_WEEK_VIEW) {
         vm.weekAndYearNumber = getWeekAndYearNumber(vm.viewDate);
         vm.weekNumber = vm.weekAndYearNumber[1];
         vm.yearNumber = vm.weekAndYearNumber[0];
@@ -127,13 +128,13 @@
     }
 
     function addWeek(view) {
-      if (view === 'week') {
+      if (view === CalendarConstants.CALENDAR_WEEK_VIEW) {
         if (vm.weekNumber < vm.weeksInYear) {
           vm.weekNumber++;
         } else if (vm.weekNumber === vm.weeksInYear) {
           vm.yearNumber++;
           vm.weeksInYear = weeksInYear(vm.yearNumber);
-          vm.weekNumber = 1;
+          vm.weekNumber = CalendarConstants.CALENDAR_FIRST_WEEK_NUMBER;
         }
       }
     }
