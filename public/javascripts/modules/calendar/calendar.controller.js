@@ -13,6 +13,11 @@
     vm.actions = [];
     vm.events = [];
     vm.isCellOpen = false;
+    vm.weekNumber = {};
+    vm.subtractWeek = subtractWeek;
+    vm.setToToday = setToToday;
+    vm.addWeek = addWeek;
+    vm.updateWeek = updateWeek;
 
     // Constructor like function
     activate();
@@ -20,6 +25,11 @@
     function activate() {
       vm.calendarView = 'week';
       vm.viewDate = new Date();
+      vm.weekAndYearNumber = getWeekAndYearNumber(vm.viewDate);
+      vm.weekNumber = vm.weekAndYearNumber[1];
+      vm.yearNumber = vm.weekAndYearNumber[0];
+      vm.weeksInYear = weeksInYear(vm.yearNumber);
+
       vm.actions = [{
           label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
           onClick: function(args) {
@@ -39,7 +49,14 @@
       vm.isCellOpen = true;
     } // End of the activate function
 
-    // Functions
+    /*
+      Functions
+    */
+
+    /*
+      Functions
+      Events
+    */
     vm.addEvent = function() {
         vm.events.push({
           title: 'New event',
@@ -85,6 +102,53 @@
       event[field] = !event[field];
     };
 
+    /*
+      Functions
+      Dates
+    */
+    function subtractWeek(view) {
+      if (view === 'week') {
+        if (vm.weekNumber > 1) {
+          vm.weekNumber--;
+        } else if (vm.weekNumber === 1) {
+          vm.yearNumber--;
+          vm.weeksInYear = weeksInYear(vm.yearNumber);
+          vm.weekNumber = vm.weeksInYear;
+        }
+      }
+    }
+
+    function setToToday(view) {
+      if (view === 'week') {
+        vm.weekAndYearNumber = getWeekAndYearNumber(vm.viewDate);
+        vm.weekNumber = vm.weekAndYearNumber[1];
+        vm.yearNumber = vm.weekAndYearNumber[0];
+      }
+    }
+
+    function addWeek(view) {
+      if (view === 'week') {
+        if (vm.weekNumber < vm.weeksInYear) {
+          vm.weekNumber++;
+        } else if (vm.weekNumber === vm.weeksInYear) {
+          vm.yearNumber++;
+          vm.weeksInYear = weeksInYear(vm.yearNumber);
+          vm.weekNumber = 1;
+        }
+      }
+    }
+
+    function updateWeek(viewDate) {
+      vm.weekAndYearNumber = getWeekAndYearNumber(viewDate);
+      vm.weekNumber = vm.weekAndYearNumber[1];
+      vm.yearNumber = vm.weekAndYearNumber[0];
+    }
+
+    /*
+      Functions
+      Dates
+      Helpers
+    */
     function convertDates(events) {
       var currentStartDate, currentEndDate = {};
 
@@ -104,6 +168,32 @@
         events[i].endsAt = new Date(currentEndDate.getTime() +
                            currentEndDate.getTimezoneOffset() * 60000);
       }
+    }
+
+    function getWeekAndYearNumber(d) {
+      // Copy date so don't modify original
+      d = new Date(+d);
+      d.setHours(0,0,0,0);
+      // Set to nearest Thursday: current date + 4 - current day number
+      // Make Sunday's day number 7
+      d.setDate(d.getDate() + 4 - (d.getDay()||7));
+      // Get first day of year
+      var yearStart = new Date(d.getFullYear(),0,1);
+      // Calculate full weeks to nearest Thursday
+      var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
+      // Return array of year and week number
+      return [d.getFullYear(), weekNo];
+    }
+
+    function weeksInYear(year) {
+      var d = new Date(year, 11, 31);
+      var week = getWeekAndYearNumber(d)[1];
+
+      /*
+        If 31 December is in the following year it gets the week for 24
+        December.
+      */
+      return week == 1 ? getWeekAndYearNumber(d.setDate(24))[1] : week;
     }
   }
 })();

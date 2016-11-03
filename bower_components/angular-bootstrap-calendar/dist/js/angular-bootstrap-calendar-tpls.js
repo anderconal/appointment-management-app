@@ -3516,7 +3516,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        },
 	        title: {
 	          day: 'EEEE d MMMM, yyyy',
-	          week: 'Week {week} of {year}',
+	          week: 'Test {week} of {year}',
 	          month: 'MMMM yyyy',
 	          year: 'yyyy'
 	        }
