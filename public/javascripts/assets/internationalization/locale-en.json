@@ -14,5 +14,6 @@
   "calendar.template.secondary_color": "Secondary color",
   "calendar.template.starts_at": "Starts at",
   "calendar.template.ends_at": "Ends at",
-  "calendar.template.remove": "Remove"
+  "calendar.template.remove": "Remove",
+  "calendar.template.of": "of"
 }
