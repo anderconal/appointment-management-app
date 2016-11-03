@@ -3516,7 +3516,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        },
 	        title: {
 	          day: 'EEEE d MMMM, yyyy',
-	          week: 'Test {week} of {year}',
+	          week: 'Week {week} of {year}',
 	          month: 'MMMM yyyy',
 	          year: 'yyyy'
 	        }
@@ -4045,4 +4045,3 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ }
 /******/ ])
 });
-;
