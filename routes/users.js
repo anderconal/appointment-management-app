@@ -1,4 +1,5 @@
 var express = require('express');
+/*eslint new-cap: [2, {"capIsNewExceptions": ["Router"]}]*/
 var router = express.Router();
 
 /* GET users listing. */

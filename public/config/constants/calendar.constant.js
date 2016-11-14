@@ -8,5 +8,5 @@
     CALENDAR_MONTH_VIEW: 'month',
     CALENDAR_YEAR_VIEW: 'year',
     CALENDAR_FIRST_WEEK_NUMBER: 1
-  })
+  });
 })();
