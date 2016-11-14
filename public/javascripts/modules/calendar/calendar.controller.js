@@ -32,16 +32,18 @@
       vm.weeksInYear = weeksInYear(vm.yearNumber);
 
       vm.actions = [{
-          label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
-          onClick: function(args) {
-            alert.show('Edited', args.calendarEvent);
-          }
-        }, {
-          label: '<i class=\'glyphicon glyphicon-remove\'></i>',
-          onClick: function(args) {
-            alert.show('Deleted', args.calendarEvent);
-          }
-        }];
+        label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
+
+        onClick: function(args) {
+          alert.show('Edited', args.calendarEvent);
+        }
+      }, {
+        label: '<i class=\'glyphicon glyphicon-remove\'></i>',
+
+        onClick: function(args) {
+          alert.show('Deleted', args.calendarEvent);
+        }
+      }];
 
       vm.events = getAllEvents;
 
@@ -59,16 +61,16 @@
       Events
     */
     vm.addEvent = function() {
-        vm.events.push({
-          title: 'New event',
-          startsAt: moment().startOf('day').toDate(),
-          endsAt: moment().endOf('day').toDate(),
-          color: calendarConfig.colorTypes.important,
-          draggable: true,
-          resizable: true
-        });
-        console.log(startsAt);
-      };
+      vm.events.push({
+        title: 'New event',
+        startsAt: moment().startOf('day').toDate(),
+        endsAt: moment().endOf('day').toDate(),
+        color: calendarConfig.colorTypes.important,
+        draggable: true,
+        resizable: true
+      });
+      console.log(startsAt);
+    };
 
     vm.eventClicked = function(event) {
       var modalInstance = $uibModal.open({
@@ -177,11 +179,11 @@
       d.setHours(0,0,0,0);
       // Set to nearest Thursday: current date + 4 - current day number
       // Make Sunday's day number 7
-      d.setDate(d.getDate() + 4 - (d.getDay()||7));
+      d.setDate(d.getDate() + 4 - (d.getDay() || 7));
       // Get first day of year
       var yearStart = new Date(d.getFullYear(),0,1);
       // Calculate full weeks to nearest Thursday
-      var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
+      var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1) / 7);
       // Return array of year and week number
       return [d.getFullYear(), weekNo];
     }
@@ -194,7 +196,7 @@
         If 31 December is in the following year it gets the week for 24
         December.
       */
-      return week == 1 ? getWeekAndYearNumber(d.setDate(24))[1] : week;
+      return week === 1 ? getWeekAndYearNumber(d.setDate(24))[1] : week;
     }
   }
 })();

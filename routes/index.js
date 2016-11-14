@@ -2,6 +2,7 @@
   Load all the things we need
 */
 var express = require('express');
+/*eslint new-cap: [2, {"capIsNewExceptions": ["Router"]}]*/
 var router = express.Router();
 var passport = require('passport');
 
@@ -78,7 +79,7 @@ router.get('/', function(req, res) {
 // Login, show the login form
 router.get('/login', function(req, res) {
   // Render the page and pass in any flash data if it exists
-  res.render('login.ejs', { message: req.flash('loginMessage') });
+  res.render('login.ejs', {message: req.flash('loginMessage')});
 });
 
 // Process the login form
@@ -96,7 +97,7 @@ router.post('/login', passport.authenticate('local-login', {
 // Show the signup form
 router.get('/signup', function(req, res) {
   // Render the page and pass in any flash data if it exists
-  res.render('signup.ejs', { message: req.flash('signupMessage') });
+  res.render('signup.ejs', {message: req.flash('signupMessage')});
 });
 
 // Process the signup form
@@ -124,8 +125,8 @@ router.get('/profile', isLoggedIn, function(req, res) {
 // Logout
 /**********/
 router.get('/logout', function(req, res) {
-    req.logout();
-    res.redirect('/');
+  req.logout();
+  res.redirect('/');
 });
 
 /**********/
@@ -136,7 +137,7 @@ router.get('/logout', function(req, res) {
   information including their name. Email gets their emails.
 */
 router.get('/auth/google', passport.authenticate('google', {
-                            scope: ['profile', 'email']}));
+  scope: ['profile', 'email']}));
 
 // The callback after Google has authenticated the user
 router.get('/auth/google/callback',
@@ -144,12 +145,12 @@ router.get('/auth/google/callback',
               successRedirect: '/home',
               failureRedirect: '/'
             }));
-            
+
 /**********/
 // Application start page
 /**********/
 router.get('/home', function(req, res, next) {
-  res.render('home', { title: 'Express' });
+  res.render('home', {title: 'Express'});
 });
 
 /**********/
@@ -158,8 +159,9 @@ router.get('/home', function(req, res, next) {
 // Route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
   // If user is authenticated in the session, carry on
-  if (req.isAuthenticated())
+  if (req.isAuthenticated()) {
     return next();
+  }
   // If they aren't redirect them to the home page
   res.redirect('/');
 }

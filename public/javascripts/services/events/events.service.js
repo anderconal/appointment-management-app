@@ -7,8 +7,8 @@
   /* @ngInject */
   function Events($http, $q) {
     var service = {
-        getAllEvents: getAllEvents
-      };
+      getAllEvents: getAllEvents
+    };
 
     var getAllEvents = getAllEvents;
 
@@ -66,12 +66,10 @@
     } */
 
     function getAllEvents() {
-      var events = {};
       var deferred = $q.defer();
 
       $http.get('/events').then(function(result) {
         deferred.resolve(result.data);
-        //angular.copy(result.data, events);
       }, function(error) {
         deferred.reject(error);
       });

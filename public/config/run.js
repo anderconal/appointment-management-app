@@ -13,7 +13,7 @@
     LocaleService.setLocale(language);
 
     // Set the browser language as calendar's language (using moment)
-    switch(language) {
+    switch (language) {
 
       case LanguageConstants.SPANISH_LANGUAGE_CODE:
         moment.locale(LanguageConstants.MOMENT_SPANISH_LANGUAGE_CODE);
@@ -25,7 +25,6 @@
 
       default:
         moment.locale(LanguageConstants.MOMENT_SPANISH_LANGUAGE_CODE);
-        
     }
   }
 })();

@@ -8,5 +8,5 @@
         'en': 'English'
       },
       'preferredLocale': 'es'
-    })
+    });
 })();

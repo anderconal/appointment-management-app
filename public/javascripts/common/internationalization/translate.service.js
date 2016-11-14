@@ -18,7 +18,7 @@
     }
 
     var _LOCALES_DISPLAY_NAMES = [];
-    _LOCALES.forEach(function (locale) {
+    _LOCALES.forEach(function(locale) {
       _LOCALES_DISPLAY_NAMES.push(localesObj[locale]);
     });
 
@@ -31,11 +31,11 @@
     /*
       Methods
     */
-    var checkLocaleIsValid = function (locale) {
+    var checkLocaleIsValid = function(locale) {
       return _LOCALES.indexOf(locale) !== -1;
     };
 
-    var setLocale = function (locale) {
+    var setLocale = function(locale) {
       if (!checkLocaleIsValid(locale)) {
         console.error('Locale name "' + locale + '" is invalid');
         return;
@@ -52,7 +52,7 @@
       Events
     */
     // On successful applying translations by angular-translate
-    $rootScope.$on('$translateChangeSuccess', function (event, data) {
+    $rootScope.$on('$translateChangeSuccess', function(event, data) {
       // Sets "lang" attribute to HTML
       document.documentElement.setAttribute('lang', data.language);
       /*
@@ -63,17 +63,17 @@
     });
 
     return {
-      getLocaleDisplayName: function () {
+      getLocaleDisplayName: function() {
         return localesObj[currentLocale];
       },
-      setLocaleByDisplayName: function (localeDisplayName) {
+      setLocaleByDisplayName: function(localeDisplayName) {
         setLocale(
           _LOCALES[
             _LOCALES_DISPLAY_NAMES.indexOf(localeDisplayName)// get locale index
             ]
         );
       },
-      getLocalesDisplayNames: function () {
+      getLocalesDisplayNames: function() {
         return _LOCALES_DISPLAY_NAMES;
       },
       setLocale: setLocale

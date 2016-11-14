@@ -8,12 +8,12 @@
   .config(configure);
 
   /* @ngInject */
-  function configure ($translateProvider, tmhDynamicLocaleProvider) {
+  function configure($translateProvider, tmhDynamicLocaleProvider) {
     $translateProvider.useMissingTranslationHandlerLog();
     $translateProvider.useStaticFilesLoader({
-        // Path to translations files
-        prefix: 'javascripts/assets/internationalization/locale-',
-        suffix: '.json' // Suffix, currently- extension of the translations
+      // Path to translations files
+      prefix: 'javascripts/assets/internationalization/locale-',
+      suffix: '.json' // Suffix, currently- extension of the translations
     });
     $translateProvider.preferredLanguage('es'); // Is applied on first load
     // Saves selected language to localStorage
